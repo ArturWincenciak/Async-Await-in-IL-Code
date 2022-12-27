@@ -27,13 +27,12 @@ internal class ConwayCleanCode
 
     private Task LongMethodFirst() =>
         Task.CompletedTask;
-    //Task.Delay(TimeSpan.FromSeconds(3));
 
     private Task LongMethodSecond() =>
         Task.Delay(TimeSpan.FromSeconds(3));
 
     private Task LongMethodThird() =>
-        Task.Delay(TimeSpan.FromSeconds(3));
+        Task.CompletedTask;
 
     private Task LongMethodFourth() =>
         Task.Delay(TimeSpan.FromSeconds(3));
