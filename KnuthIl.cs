@@ -14,13 +14,13 @@ internal class KnuthIl
         return stateMachine.Builder.Task;
     }
     
-    private void LocalLogicMethodFirst() => 
-        Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodFirst)}");
+    private void MethodFirst() => 
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodFirst)}");
 
-    private void LocalLogicMethodSecond() => 
-        Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodSecond)}");
+    private void MethodSecond() => 
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodSecond)}");
     
-    private Task LogRunningMethod() => 
+    private Task LongMethod() => 
         Task.Delay(TimeSpan.FromSeconds(3));
     
     private class ExampleStateMachine : IAsyncStateMachine
@@ -39,8 +39,8 @@ internal class KnuthIl
                 int num2;
                 if (num1 != 0)
                 {
-                    This.LocalLogicMethodFirst();
-                    awaiter1 = This.LogRunningMethod().GetAwaiter();
+                    This.MethodFirst();
+                    awaiter1 = This.LongMethod().GetAwaiter();
 
                     if (!awaiter1.IsCompleted)
                     {
@@ -59,7 +59,7 @@ internal class KnuthIl
                 }
 
                 awaiter1.GetResult();
-                This.LocalLogicMethodSecond();
+                This.MethodSecond();
             }
             catch (Exception ex)
             {

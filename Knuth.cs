@@ -4,17 +4,17 @@ internal class Knuth
 {
     public async Task Example()
     {
-        LocalLogicMethodFirst();
-        await LogRunningMethod();
-        LocalLogicMethodSecond();
+        MethodFirst();
+        await LongMethod();
+        MethodSecond();
     }
 
-    private void LocalLogicMethodFirst() => 
-        Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodFirst)}");
+    private void MethodFirst() => 
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodFirst)}");
 
-    private void LocalLogicMethodSecond() => 
-        Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodSecond)}");
+    private void MethodSecond() => 
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodSecond)}");
     
-    private Task LogRunningMethod() => 
+    private Task LongMethod() => 
         Task.Delay(TimeSpan.FromSeconds(3));
 }

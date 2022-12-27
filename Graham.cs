@@ -4,25 +4,25 @@ internal class Graham
 {
     public async Task Example()
     {
-        LocalLogicMethodFirst();
-        await LogRunningMethodFirst();
-        LocalLogicMethodSecond();
-        await LogRunningMethodSecond();
-        LocalLogicMethodThird();
+        MethodFirst();
+        await LongMethodFirst();
+        MethodSecond();
+        await LongMethodSecond();
+        MethodThird();
     }
 
-    private void LocalLogicMethodFirst() => 
-        Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodFirst)}");
+    private void MethodFirst() => 
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodFirst)}");
 
-    private void LocalLogicMethodSecond() => 
-        Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodSecond)}");
+    private void MethodSecond() => 
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodSecond)}");
     
-    private void LocalLogicMethodThird() => 
-        Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodThird)}");
+    private void MethodThird() => 
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodThird)}");
     
-    private Task LogRunningMethodFirst() => 
+    private Task LongMethodFirst() => 
         Task.Delay(TimeSpan.FromSeconds(3));
     
-    private Task LogRunningMethodSecond() => 
+    private Task LongMethodSecond() => 
         Task.Delay(TimeSpan.FromSeconds(3));
 }

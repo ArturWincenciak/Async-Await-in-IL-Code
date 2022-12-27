@@ -19,3 +19,9 @@ Console.WriteLine($"{Log.TimeNow} 05 Global");
 var graham = new Graham();
 await graham.Example();
 Console.WriteLine($"{Log.TimeNow} 06 Global");
+
+Console.WriteLine();
+Console.WriteLine($"{Log.TimeNow} 07 Global");
+var grahamIl = new GrahamIl();
+await grahamIl.Example();
+Console.WriteLine($"{Log.TimeNow} 08 Global");
