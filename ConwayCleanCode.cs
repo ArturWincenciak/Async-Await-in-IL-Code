@@ -6,12 +6,8 @@ internal class ConwayCleanCode
 {
     public Task Example()
     {
-        var stateMachine = new ExampleStateMachine();
-        stateMachine.Builder = AsyncTaskMethodBuilder.Create();
-        stateMachine.State = -1;
-        stateMachine.This = this;
-        stateMachine.Builder.Start(ref stateMachine);
-        return stateMachine.Builder.Task;
+        var stateMachine = new ExampleStateMachine(this);
+        return stateMachine.Execute();
     }
 
     private void MethodFirst() =>
@@ -43,26 +39,40 @@ internal class ConwayCleanCode
 
     private class ExampleStateMachine : IAsyncStateMachine
     {
-        public int State;
-        public AsyncTaskMethodBuilder Builder;
-        public ConwayCleanCode This;
+        private int _state;
+        private AsyncTaskMethodBuilder _builder;
+        private readonly ConwayCleanCode _target;
         private TaskAwaiter _awaiter;
-        
+
+        public ExampleStateMachine(ConwayCleanCode target)
+        {
+            _target = target;
+            _builder = AsyncTaskMethodBuilder.Create();
+            _state = -1;
+        }
+
+        public Task Execute()
+        {
+            var stateMachine = this;
+            _builder.Start(ref stateMachine);
+            return _builder.Task;
+        }
+
         public void MoveNext()
         {
             try
             {
-                switch (State)
+                switch (_state)
                 {
                     case -1:
                     {
-                        This.MethodFirst();
-                        State = 0;
-                        _awaiter = This.LongMethodFirst().GetAwaiter();
+                        _target.MethodFirst();
+                        _state = 0;
+                        _awaiter = _target.LongMethodFirst().GetAwaiter();
                         if (!_awaiter.IsCompleted)
                         {
                             var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
+                            _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
                             return;
                         }
 
@@ -71,13 +81,13 @@ internal class ConwayCleanCode
                     case 0:
                     {
                         _awaiter.GetResult();
-                        This.MethodSecond();
-                        State = 1;
-                        _awaiter = This.LongMethodSecond().GetAwaiter();
+                        _target.MethodSecond();
+                        _state = 1;
+                        _awaiter = _target.LongMethodSecond().GetAwaiter();
                         if (!_awaiter.IsCompleted)
                         {
                             var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
+                            _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
                             return;
                         }
                         break;
@@ -85,13 +95,13 @@ internal class ConwayCleanCode
                     case 1:
                     {
                         _awaiter.GetResult();
-                        This.MethodThird();
-                        State = 2;
-                        _awaiter = This.LongMethodThird().GetAwaiter();
+                        _target.MethodThird();
+                        _state = 2;
+                        _awaiter = _target.LongMethodThird().GetAwaiter();
                         if (!_awaiter.IsCompleted)
                         {
                             var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
+                            _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
                             return;
                         }
                         break;
@@ -99,13 +109,13 @@ internal class ConwayCleanCode
                     case 2:
                     {
                         _awaiter.GetResult();
-                        This.MethodFourth();
-                        State = 3;
-                        _awaiter = This.LongMethodFourth().GetAwaiter();
+                        _target.MethodFourth();
+                        _state = 3;
+                        _awaiter = _target.LongMethodFourth().GetAwaiter();
                         if (!_awaiter.IsCompleted)
                         {
                             var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
+                            _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
                             return;
                         }
                         break;
@@ -113,23 +123,23 @@ internal class ConwayCleanCode
                     case 3:
                     {
                         _awaiter.GetResult();
-                        This.MethodFifth();
+                        _target.MethodFifth();
                         break;
                     }
                     default:
                     {
-                        throw new InvalidOperationException($"State equals {State}");
+                        throw new InvalidOperationException($"State equals {_state}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                State = -2;
-                Builder.SetException(ex);
+                _state = -2;
+                _builder.SetException(ex);
             }
 
-            State = -2;
-            Builder.SetResult();
+            _state = -2;
+            _builder.SetResult();
         }
 
         public void SetStateMachine(IAsyncStateMachine stateMachine)
