@@ -2,7 +2,7 @@
 
 Console.WriteLine("Alright Async Await!");
 
-Console.WriteLine();
+/*Console.WriteLine();
 Console.WriteLine("01 Global - Knuth");
 var knuth = new Knuth();
 await knuth.Example();
@@ -48,7 +48,7 @@ Console.WriteLine();
 Console.WriteLine("14 Global - Conway IL");
 var conwayIl = new ConwayIl();
 await conwayIl.Example();
-Console.WriteLine("15 Global");
+Console.WriteLine("15 Global");*/
 
 Console.WriteLine();
 Console.WriteLine("16 Global - Conway Clean Code");
