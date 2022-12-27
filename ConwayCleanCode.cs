@@ -70,15 +70,7 @@ internal class ConwayCleanCode
                         _state = 0;
                         _target.MethodFirst();
                         _awaiter = _target.LongMethodFirst().GetAwaiter();
-                        if (!_awaiter.IsCompleted)
-                        {
-                            var stateMachine = this;
-                            _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                        }
-                        else
-                        {
-                            MoveNext();
-                        }
+                        Await();
                         break;
                     }
                     case 0:
@@ -87,15 +79,7 @@ internal class ConwayCleanCode
                         _awaiter.GetResult();
                         _target.MethodSecond();
                         _awaiter = _target.LongMethodSecond().GetAwaiter();
-                        if (!_awaiter.IsCompleted)
-                        {
-                            var stateMachine = this;
-                            _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                        }
-                        else
-                        {
-                            MoveNext();
-                        }
+                        Await();
                         break;
                     }
                     case 1:
@@ -104,15 +88,7 @@ internal class ConwayCleanCode
                         _awaiter.GetResult();
                         _target.MethodThird();
                         _awaiter = _target.LongMethodThird().GetAwaiter();
-                        if (!_awaiter.IsCompleted)
-                        {
-                            var stateMachine = this;
-                            _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                        }
-                        else
-                        {
-                            MoveNext();
-                        }
+                        Await();
                         break;
                     }
                     case 2:
@@ -121,15 +97,7 @@ internal class ConwayCleanCode
                         _awaiter.GetResult();
                         _target.MethodFourth();
                         _awaiter = _target.LongMethodFourth().GetAwaiter();
-                        if (!_awaiter.IsCompleted)
-                        {
-                            var stateMachine = this;
-                            _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                        }
-                        else
-                        {
-                            MoveNext();
-                        }
+                        Await();
                         break;
                     }
                     case 3:
@@ -151,6 +119,19 @@ internal class ConwayCleanCode
             {
                 _state = -2;
                 _builder.SetException(ex);
+            }
+        }
+
+        private void Await()
+        {
+            if (!_awaiter.IsCompleted)
+            {
+                var stateMachine = this;
+                _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
+            }
+            else
+            {
+                MoveNext();
             }
         }
 
