@@ -50,26 +50,24 @@ internal class ConwayCleanCode
         
         public void MoveNext()
         {
-            int num1 = State;
             try
             {
-                int num2;
                 TaskAwaiter awaiter1;
                 TaskAwaiter awaiter2;
                 TaskAwaiter awaiter3;
                 TaskAwaiter awaiter4;
-                switch (num1)
+                switch (State)
                 {
                     case 0:
                         awaiter1 = _awaiter;
                         _awaiter = new TaskAwaiter();
-                        State = num2 = -1;
+                        State = -1;
                         awaiter1.GetResult();
                         This.MethodSecond();
                         awaiter2 = This.LongMethodSecond().GetAwaiter();
                         if (!awaiter2.IsCompleted)
                         {
-                            State = num2 = 1;
+                            State = 1;
                             _awaiter = awaiter2;
                             var stateMachine = this;
                             Builder.AwaitUnsafeOnCompleted(ref awaiter2, ref stateMachine);
@@ -79,13 +77,13 @@ internal class ConwayCleanCode
                     case 1:
                         awaiter2 = _awaiter;
                         _awaiter = new TaskAwaiter();
-                        State = num2 = -1;
+                        State = -1;
                         awaiter2.GetResult();
                         This.MethodThird();
                         awaiter3 = This.LongMethodThird().GetAwaiter();
                         if (!awaiter3.IsCompleted)
                         {
-                            State = num2 = 2;
+                            State = 2;
                             _awaiter = awaiter3;
                             var stateMachine = this;
                             Builder.AwaitUnsafeOnCompleted(ref awaiter3, ref stateMachine);
@@ -95,13 +93,13 @@ internal class ConwayCleanCode
                     case 2:
                         awaiter3 = _awaiter;
                         _awaiter = new TaskAwaiter();
-                        State = num2 = -1;
+                        State = -1;
                         awaiter3.GetResult();
                         This.MethodFourth();
                         awaiter4 = This.LongMethodFourth().GetAwaiter();
                         if (!awaiter4.IsCompleted)
                         {
-                            State = num2 = 3;
+                            State = 3;
                             _awaiter = awaiter4;
                             var stateMachine = this;
                             Builder.AwaitUnsafeOnCompleted(ref awaiter4, ref stateMachine);
@@ -111,7 +109,7 @@ internal class ConwayCleanCode
                     case 3:
                         awaiter4 = _awaiter;
                         _awaiter = new TaskAwaiter();
-                        State = num2 = -1;
+                        State = -1;
                         awaiter4.GetResult();
                         This.MethodFifth();
                         break;
@@ -120,7 +118,7 @@ internal class ConwayCleanCode
                         awaiter1 = This.LongMethodFirst().GetAwaiter();
                         if (!awaiter1.IsCompleted)
                         {
-                            State = num2 = 0;
+                            State = 0;
                             _awaiter = awaiter1;
                             var stateMachine = this;
                             Builder.AwaitUnsafeOnCompleted(ref awaiter1, ref stateMachine);
