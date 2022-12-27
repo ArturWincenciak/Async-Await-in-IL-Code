@@ -4,12 +4,18 @@ Console.WriteLine("Alright Async Await!");
 
 Console.WriteLine();
 Console.WriteLine($"{Log.TimeNow} 01 Global");
-var joy = new Joy();
-await joy.Example();
+var knuth = new Knuth();
+await knuth.Example();
 Console.WriteLine($"{Log.TimeNow} 02 Global");
 
 Console.WriteLine();
 Console.WriteLine($"{Log.TimeNow} 03 Global");
-var joyIl = new JoyIl();
-await joyIl.Example();
+var knuthIl = new KnuthIl();
+await knuthIl.Example();
 Console.WriteLine($"{Log.TimeNow} 04 Global");
+
+Console.WriteLine();
+Console.WriteLine($"{Log.TimeNow} 05 Global");
+var graham = new Graham();
+await graham.Example();
+Console.WriteLine($"{Log.TimeNow} 06 Global");

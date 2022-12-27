@@ -1,12 +1,14 @@
 ﻿namespace Async_Await;
 
-internal class Joy
+internal class Graham
 {
     public async Task Example()
     {
         LocalLogicMethodFirst();
-        await LogRunningMethod();
+        await LogRunningMethodFirst();
         LocalLogicMethodSecond();
+        await LogRunningMethodSecond();
+        LocalLogicMethodThird();
     }
 
     private void LocalLogicMethodFirst() => 
@@ -15,6 +17,12 @@ internal class Joy
     private void LocalLogicMethodSecond() => 
         Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodSecond)}");
     
-    private Task LogRunningMethod() => 
+    private void LocalLogicMethodThird() => 
+        Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodThird)}");
+    
+    private Task LogRunningMethodFirst() => 
+        Task.Delay(TimeSpan.FromSeconds(3));
+    
+    private Task LogRunningMethodSecond() => 
         Task.Delay(TimeSpan.FromSeconds(3));
 }

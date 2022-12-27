@@ -2,7 +2,7 @@
 
 namespace Async_Await;
 
-internal class JoyIl 
+internal class KnuthIl 
 {
     public Task Example()
     {
@@ -21,13 +21,13 @@ internal class JoyIl
         Console.WriteLine($"{Log.TimeNow} {nameof(LocalLogicMethodSecond)}");
     
     private Task LogRunningMethod() => 
-        Task.Delay(TimeSpan.FromSeconds(30));
+        Task.Delay(TimeSpan.FromSeconds(3));
     
     private class ExampleStateMachine : IAsyncStateMachine
     {
         public int State;
         public AsyncTaskMethodBuilder Builder;
-        public JoyIl This;
+        public KnuthIl This;
         private TaskAwaiter _awaiter;
 
         public void MoveNext()
