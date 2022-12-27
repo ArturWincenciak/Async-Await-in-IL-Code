@@ -26,7 +26,8 @@ internal class ConwayCleanCode
         Console.WriteLine($"{Log.TimeNow} {nameof(MethodFourth)}");
 
     private Task LongMethodFirst() =>
-        Task.Delay(TimeSpan.FromSeconds(3));
+        Task.CompletedTask;
+    //Task.Delay(TimeSpan.FromSeconds(3));
 
     private Task LongMethodSecond() =>
         Task.Delay(TimeSpan.FromSeconds(3));
@@ -73,9 +74,11 @@ internal class ConwayCleanCode
                         {
                             var stateMachine = this;
                             _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                            return;
                         }
-
+                        else
+                        {
+                            MoveNext();
+                        }
                         break;
                     }
                     case 0:
@@ -88,7 +91,10 @@ internal class ConwayCleanCode
                         {
                             var stateMachine = this;
                             _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                            return;
+                        }
+                        else
+                        {
+                            MoveNext();
                         }
                         break;
                     }
@@ -102,7 +108,10 @@ internal class ConwayCleanCode
                         {
                             var stateMachine = this;
                             _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                            return;
+                        }
+                        else
+                        {
+                            MoveNext();
                         }
                         break;
                     }
@@ -116,7 +125,10 @@ internal class ConwayCleanCode
                         {
                             var stateMachine = this;
                             _builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                            return;
+                        }
+                        else
+                        {
+                            MoveNext();
                         }
                         break;
                     }
@@ -124,6 +136,8 @@ internal class ConwayCleanCode
                     {
                         _awaiter.GetResult();
                         _target.MethodFifth();
+                        
+                        _builder.SetResult();
                         break;
                     }
                     default:
@@ -137,9 +151,6 @@ internal class ConwayCleanCode
                 _state = -2;
                 _builder.SetException(ex);
             }
-
-            _state = -2;
-            _builder.SetResult();
         }
 
         public void SetStateMachine(IAsyncStateMachine stateMachine)
