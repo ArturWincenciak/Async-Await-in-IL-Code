@@ -37,3 +37,15 @@ Console.WriteLine("11 Global - Riemann IL");
 var riemannIt = new RiemannIl();
 await riemannIt.Example();
 Console.WriteLine("11 Global");
+
+Console.WriteLine();
+Console.WriteLine("12 Global - Conway");
+var conway = new Conway();
+await conway.Example();
+Console.WriteLine("13 Global");
+
+Console.WriteLine();
+Console.WriteLine("14 Global - Conway IL");
+var conwayIl = new ConwayIl();
+await conwayIl.Example();
+Console.WriteLine("15 Global");
