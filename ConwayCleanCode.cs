@@ -52,79 +52,73 @@ internal class ConwayCleanCode
         {
             try
             {
-                TaskAwaiter awaiter1;
-                TaskAwaiter awaiter2;
-                TaskAwaiter awaiter3;
-                TaskAwaiter awaiter4;
                 switch (State)
                 {
                     case 0:
-                        awaiter1 = _awaiter;
-                        _awaiter = new TaskAwaiter();
-                        State = -1;
-                        awaiter1.GetResult();
+                    {
+                        _awaiter.GetResult();
                         This.MethodSecond();
-                        awaiter2 = This.LongMethodSecond().GetAwaiter();
-                        if (!awaiter2.IsCompleted)
+                        var awaiter = This.LongMethodSecond().GetAwaiter();
+                        if (!awaiter.IsCompleted)
                         {
                             State = 1;
-                            _awaiter = awaiter2;
+                            _awaiter = awaiter;
                             var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref awaiter2, ref stateMachine);
+                            Builder.AwaitUnsafeOnCompleted(ref awaiter, ref stateMachine);
                             return;
                         }
                         break;
+                    }
                     case 1:
-                        awaiter2 = _awaiter;
-                        _awaiter = new TaskAwaiter();
-                        State = -1;
-                        awaiter2.GetResult();
+                    {
+                        _awaiter.GetResult();
                         This.MethodThird();
-                        awaiter3 = This.LongMethodThird().GetAwaiter();
-                        if (!awaiter3.IsCompleted)
+                        var awaiter = This.LongMethodThird().GetAwaiter();
+                        if (!awaiter.IsCompleted)
                         {
                             State = 2;
-                            _awaiter = awaiter3;
+                            _awaiter = awaiter;
                             var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref awaiter3, ref stateMachine);
+                            Builder.AwaitUnsafeOnCompleted(ref awaiter, ref stateMachine);
                             return;
                         }
                         break;
+                    }
                     case 2:
-                        awaiter3 = _awaiter;
-                        _awaiter = new TaskAwaiter();
-                        State = -1;
-                        awaiter3.GetResult();
+                    {
+                        _awaiter.GetResult();
                         This.MethodFourth();
-                        awaiter4 = This.LongMethodFourth().GetAwaiter();
-                        if (!awaiter4.IsCompleted)
+                        var awaiter = This.LongMethodFourth().GetAwaiter();
+                        if (!awaiter.IsCompleted)
                         {
                             State = 3;
-                            _awaiter = awaiter4;
+                            _awaiter = awaiter;
                             var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref awaiter4, ref stateMachine);
+                            Builder.AwaitUnsafeOnCompleted(ref awaiter, ref stateMachine);
                             return;
                         }
                         break;
+                    }
                     case 3:
-                        awaiter4 = _awaiter;
-                        _awaiter = new TaskAwaiter();
-                        State = -1;
-                        awaiter4.GetResult();
+                    {
+                        _awaiter.GetResult();
                         This.MethodFifth();
                         break;
+                    }
                     default:
+                    {
                         This.MethodFirst();
-                        awaiter1 = This.LongMethodFirst().GetAwaiter();
-                        if (!awaiter1.IsCompleted)
+                        var awaiter = This.LongMethodFirst().GetAwaiter();
+                        if (!awaiter.IsCompleted)
                         {
                             State = 0;
-                            _awaiter = awaiter1;
+                            _awaiter = awaiter;
                             var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref awaiter1, ref stateMachine);
+                            Builder.AwaitUnsafeOnCompleted(ref awaiter, ref stateMachine);
                             return;
                         }
                         break;
+                    }
                 }
             }
             catch (Exception ex)
