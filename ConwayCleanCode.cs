@@ -67,8 +67,8 @@ internal class ConwayCleanCode
                 {
                     case -1:
                     {
-                        _target.MethodFirst();
                         _state = 0;
+                        _target.MethodFirst();
                         _awaiter = _target.LongMethodFirst().GetAwaiter();
                         if (!_awaiter.IsCompleted)
                         {
@@ -83,9 +83,9 @@ internal class ConwayCleanCode
                     }
                     case 0:
                     {
+                        _state = 1;
                         _awaiter.GetResult();
                         _target.MethodSecond();
-                        _state = 1;
                         _awaiter = _target.LongMethodSecond().GetAwaiter();
                         if (!_awaiter.IsCompleted)
                         {
@@ -100,9 +100,9 @@ internal class ConwayCleanCode
                     }
                     case 1:
                     {
+                        _state = 2;
                         _awaiter.GetResult();
                         _target.MethodThird();
-                        _state = 2;
                         _awaiter = _target.LongMethodThird().GetAwaiter();
                         if (!_awaiter.IsCompleted)
                         {
@@ -117,9 +117,9 @@ internal class ConwayCleanCode
                     }
                     case 2:
                     {
+                        _state = 3;
                         _awaiter.GetResult();
                         _target.MethodFourth();
-                        _state = 3;
                         _awaiter = _target.LongMethodFourth().GetAwaiter();
                         if (!_awaiter.IsCompleted)
                         {
@@ -137,6 +137,7 @@ internal class ConwayCleanCode
                         _awaiter.GetResult();
                         _target.MethodFifth();
                         
+                        _state = -2;
                         _builder.SetResult();
                         break;
                     }
