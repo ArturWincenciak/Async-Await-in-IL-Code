@@ -1,22 +1,15 @@
-﻿Console.WriteLine("Alright Async Await!");
+﻿using Async_Await;
 
+Console.WriteLine("Alright Async Await!");
+
+Console.WriteLine();
 Console.WriteLine($"{Log.TimeNow} 01 Global");
 var joy = new Joy();
 await joy.Example();
 Console.WriteLine($"{Log.TimeNow} 02 Global");
 
-internal class Joy
-{
-    public async Task Example()
-    {
-        Console.WriteLine($"{Log.TimeNow} 01 {nameof(Example)}");
-        await Task.Delay(TimeSpan.FromSeconds(5));
-        Console.WriteLine($"{Log.TimeNow} 02 {nameof(Example)}");
-    }
-}
-
-internal static class Log
-{
-    public static string TimeNow => 
-        $"{DateTime.Now:HH:mm:ss.fff}";
-}
+Console.WriteLine();
+Console.WriteLine($"{Log.TimeNow} 03 Global");
+var joyIl = new JoyIl();
+await joyIl.Example();
+Console.WriteLine($"{Log.TimeNow} 04 Global");
