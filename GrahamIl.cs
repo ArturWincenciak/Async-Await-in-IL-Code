@@ -24,10 +24,10 @@ internal class GrahamIl
         Console.WriteLine($"{Log.TimeNow} {nameof(MethodThird)}");
 
     private Task LongMethodFirst() =>
-        Task.Delay(TimeSpan.FromSeconds(3));
+        Task.Delay(TimeSpan.FromSeconds(30));
 
     private Task LongMethodSecond() =>
-        Task.Delay(TimeSpan.FromSeconds(3));
+        Task.Delay(TimeSpan.FromSeconds(30));
 
     private class ExampleStateMachine : IAsyncStateMachine
     {
