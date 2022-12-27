@@ -9,6 +9,8 @@ internal class Riemann
         MethodSecond();
         await LongMethodSecond();
         MethodThird();
+        await LongMethodThird();
+        MethodFourth();
     }
 
     private void MethodFirst() =>
@@ -20,9 +22,15 @@ internal class Riemann
     private void MethodThird() =>
         Console.WriteLine($"{Log.TimeNow} {nameof(MethodThird)}");
 
+    private void MethodFourth() =>
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodFourth)}");
+    
     private Task LongMethodFirst() =>
         Task.Delay(TimeSpan.FromSeconds(3));
 
     private Task LongMethodSecond() =>
+        Task.Delay(TimeSpan.FromSeconds(3));
+
+    private Task LongMethodThird() =>
         Task.Delay(TimeSpan.FromSeconds(3));
 }
