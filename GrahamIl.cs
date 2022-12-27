@@ -9,6 +9,7 @@ internal class GrahamIl
         var stateMachine = new ExampleStateMachine();
         stateMachine.Builder = AsyncTaskMethodBuilder.Create();
         stateMachine.This = this;
+        stateMachine.State = -1;
         stateMachine.Builder.Start(ref stateMachine);
         return stateMachine.Builder.Task;
     }
@@ -74,7 +75,7 @@ internal class GrahamIl
                 }
                 
                 awaiter1.GetResult();
-                This.LongMethodSecond();
+                This.MethodSecond();
                 awaiter2 = This.LongMethodSecond().GetAwaiter();
                 if (!awaiter2.IsCompleted)
                 {
