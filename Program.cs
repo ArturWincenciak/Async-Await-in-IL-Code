@@ -49,3 +49,9 @@ Console.WriteLine("14 Global - Conway IL");
 var conwayIl = new ConwayIl();
 await conwayIl.Example();
 Console.WriteLine("15 Global");
+
+Console.WriteLine();
+Console.WriteLine("16 Global - Conway Clean Code");
+var conwayCleanCode = new ConwayCleanCode();
+await conwayCleanCode.Example();
+Console.WriteLine("17 Global");
