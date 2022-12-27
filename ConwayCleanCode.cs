@@ -54,6 +54,20 @@ internal class ConwayCleanCode
             {
                 switch (State)
                 {
+                    case -1:
+                    {
+                        This.MethodFirst();
+                        State = 0;
+                        _awaiter = This.LongMethodFirst().GetAwaiter();
+                        if (!_awaiter.IsCompleted)
+                        {
+                            var stateMachine = this;
+                            Builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
+                            return;
+                        }
+
+                        break;
+                    }
                     case 0:
                     {
                         _awaiter.GetResult();
@@ -104,16 +118,7 @@ internal class ConwayCleanCode
                     }
                     default:
                     {
-                        This.MethodFirst();
-                        State = 0;
-                        _awaiter = This.LongMethodFirst().GetAwaiter();
-                        if (!_awaiter.IsCompleted)
-                        {
-                            var stateMachine = this;
-                            Builder.AwaitUnsafeOnCompleted(ref _awaiter, ref stateMachine);
-                            return;
-                        }
-                        break;
+                        throw new InvalidOperationException($"State equals {State}");
                     }
                 }
             }
