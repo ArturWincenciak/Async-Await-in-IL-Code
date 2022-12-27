@@ -3,25 +3,25 @@
 Console.WriteLine("Alright Async Await!");
 
 Console.WriteLine();
-Console.WriteLine($"{Log.TimeNow} 01 Global");
+Console.WriteLine("01 Global");
 var knuth = new Knuth();
 await knuth.Example();
-Console.WriteLine($"{Log.TimeNow} 02 Global");
+Console.WriteLine("02 Global");
 
 Console.WriteLine();
-Console.WriteLine($"{Log.TimeNow} 03 Global");
+Console.WriteLine("03 Global");
 var knuthIl = new KnuthIl();
 await knuthIl.Example();
-Console.WriteLine($"{Log.TimeNow} 04 Global");
+Console.WriteLine("04 Global");
 
 Console.WriteLine();
-Console.WriteLine($"{Log.TimeNow} 05 Global");
+Console.WriteLine("05 Global");
 var graham = new Graham();
 await graham.Example();
-Console.WriteLine($"{Log.TimeNow} 06 Global");
+Console.WriteLine("06 Global");
 
 Console.WriteLine();
-Console.WriteLine($"{Log.TimeNow} 07 Global");
+Console.WriteLine("07 Global");
 var grahamIl = new GrahamIl();
 await grahamIl.Example();
-Console.WriteLine($"{Log.TimeNow} 08 Global");
+Console.WriteLine("08 Global");
