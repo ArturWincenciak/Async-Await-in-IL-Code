@@ -61,3 +61,9 @@ Console.WriteLine("18 Global - Planck");
 var planck = new Planck();
 var result = await planck.Example();
 Console.WriteLine($"19 Global: {result}");
+
+Console.WriteLine();
+Console.WriteLine("19 Global - Planck IL");
+var planckIl = new PlanckIl();
+var resultIl = await planckIl.Example();
+Console.WriteLine($"20 Global: {resultIl}");
