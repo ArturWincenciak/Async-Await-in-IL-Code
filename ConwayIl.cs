@@ -28,7 +28,7 @@ internal class ConwayIl
         Console.WriteLine($"{Log.TimeNow} {nameof(MethodFourth)}");
 
     private void MethodFifth() =>
-        Console.WriteLine($"{Log.TimeNow} {nameof(MethodFourth)}");
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodFifth)}");
 
     private Task LongMethodFirst() =>
         Task.Delay(TimeSpan.FromSeconds(3));

@@ -30,7 +30,7 @@ internal class Planck
         Console.WriteLine($"{Log.TimeNow} {nameof(MethodFourth)} {methodFourthArg}");
 
     private void MethodFifth(int methodFifthArg) =>
-        Console.WriteLine($"{Log.TimeNow} {nameof(MethodFourth)} {methodFifthArg}");
+        Console.WriteLine($"{Log.TimeNow} {nameof(MethodFifth)} {methodFifthArg}");
 
     private Task<int> LongMethodFirst(int firstArg) => 
         Task.FromResult(firstArg + 100);
