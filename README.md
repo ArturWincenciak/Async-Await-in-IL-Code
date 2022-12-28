@@ -2,6 +2,8 @@
 
 This project demonstrates how the async and await keywords are transformed into IL code during compilation.
 
+Within the repository, you will find pairs of implementations demonstrating this concept. Each pair consists of an implementation using `async/await` and its equivalent representation in IL code, denoted by the suffix "Il" at the end of a class name. 
+
 # Output
 
 ```
