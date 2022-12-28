@@ -4,6 +4,8 @@ This project demonstrates how the async and await keywords are transformed into 
 
 Within the repository, you will find pairs of implementations demonstrating this concept. Each pair consists of an implementation using `async/await` and its equivalent representation in IL code, denoted by the suffix "Il" at the end of a class name. 
 
+In addition to the pairs of implementations, the repository also contains the file `ConwayCleanCode` class, which is a refactored version with the goal of improving readability for humans. While this implementation may be less efficient, it serves as a demonstration of the logic and intent behind the IL code generated during compilation.
+
 # Output
 
 ```
